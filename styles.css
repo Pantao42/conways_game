@@ -87,4 +87,37 @@ button:hover {
 
 .speed-control input[type="range"]::-webkit-slider-thumb:hover {
     background: #45a049;
+}
+
+.rules {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 600px;
+}
+
+.rules h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.rules ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.rules li {
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.rules a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.rules a:hover {
+    text-decoration: underline;
 } 
