@@ -7,6 +7,7 @@ class GameOfLife {
         this.grid = this.createGrid();
         this.isRunning = false;
         this.intervalId = null;
+        this.speed = 100; // Standardgeschwindigkeit in Millisekunden
 
         // Event-Listener für Mausklicks
         this.canvas.addEventListener('click', (event) => this.handleClick(event));
@@ -127,10 +128,18 @@ class GameOfLife {
         }
     }
 
+    setSpeed(speed) {
+        this.speed = speed;
+        if (this.isRunning) {
+            this.stop();
+            this.start();
+        }
+    }
+
     start() {
         if (!this.isRunning) {
             this.isRunning = true;
-            this.intervalId = setInterval(() => this.nextGeneration(), 100);
+            this.intervalId = setInterval(() => this.nextGeneration(), this.speed);
         }
     }
 
@@ -152,6 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const width = document.getElementById('gridWidth').value * game.cellSize;
         const height = document.getElementById('gridHeight').value * game.cellSize;
         game.resize(width, height);
+    });
+
+    // Geschwindigkeitssteuerung
+    document.getElementById('speedControl').addEventListener('input', (e) => {
+        const speed = 1000 - e.target.value; // Invertiere den Wert, damit höher = schneller
+        game.setSpeed(speed);
     });
 
     // Spielsteuerung
